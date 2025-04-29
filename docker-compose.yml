@@ -21,3 +21,5 @@ services:
       - 5000:5000
     volumes:
       - ./output/:/output
+      - /etc/localtime:/etc/localtime:ro
+      - /etc/timezone:/etc/timezone:ro
