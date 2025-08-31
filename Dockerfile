@@ -7,6 +7,7 @@ RUN apk add --no-cache \
     nss \
     freetype \    
     font-noto-emoji \
+    font-noto-cjk \
     freetype-dev \
     harfbuzz \
     ca-certificates \
