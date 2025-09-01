@@ -22,12 +22,8 @@ eink:
   state-icon-unavailable-color: var(--disabled-text-color)
 
   ### Sliders ###
-  paper-slider-knob-color: "#000"
-  paper-slider-knob-start-color: "#bbb"
-  paper-slider-pin-color: "#bbb"
-  paper-slider-active-color: "#bbb"
-  paper-slider-secondary-color: var(--light-primary-color)
-  paper-slider-container-color: "#e7e7e7"
+  # paper-slider-* variables have been removed in HA 2025.5+
+  # These are replaced by modern CSS custom properties for sliders
 
   ### Labels ###
   label-badge-background-color: "#333"
@@ -36,13 +32,11 @@ eink:
 
   ### Cards ###
   paper-card-background-color: "#ffffff"
-  paper-listbox-background-color: "#ffffff"
+  # paper-listbox-background-color has been removed in HA 2025.5+
   
   ### Toggles ###
-  paper-toggle-button-checked-button-color: "#000"
-  paper-toggle-button-checked-bar-color: "#000"
-  paper-toggle-button-unchecked-button-color: "#000"
-  paper-toggle-button-unchecked-bar-color: "#c1c1c1"
+  # paper-toggle-button-* variables have been removed in HA 2025.5+
+  # Modern toggle styles are handled by the component CSS
 
   ### Dialog ###
   paper-dialog-background-color: "#ffffff"
@@ -54,10 +48,11 @@ eink:
   iron-overlay-backdrop-background-color: "#ffffff"
   mdc-theme-primary: "#000"
 
-  switch-checked-color: "var(--paper-toggle-button-checked-button-color)"
-  switch-unchecked-button-color: "var(--paper-toggle-button-unchecked-button-color)"
-  switch-unchecked-color: "var(--paper-toggle-button-unchecked-bar-color)"
-  switch-unchecked-track-color: "var(--paper-toggle-button-unchecked-bar-color)"
+  # Modern switch styles for HA 2025.5+
+  switch-checked-color: "#000"
+  switch-unchecked-button-color: "#000"
+  switch-unchecked-color: "#c1c1c1"
+  switch-unchecked-track-color: "#c1c1c1"
 
   ### Weather icons ###
   weather-icon-cloud-front-color: "#aaa"
