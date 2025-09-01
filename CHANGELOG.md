@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.0.15
+
+### Added
+
+* Support Chinese and Japanese characters by adding CJK fonts (thanks to [@karmeleon](https://github.com/karmeleon))
+
 ## 1.0.14
 
 ### Added
