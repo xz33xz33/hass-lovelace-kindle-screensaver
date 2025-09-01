@@ -22,7 +22,6 @@ eink:
   state-icon-unavailable-color: var(--disabled-text-color)
 
   ### Sliders ###
-  # paper-slider-* variables have been removed in HA 2025.5+
   # These are replaced by modern CSS custom properties for sliders
 
   ### Labels ###
@@ -32,10 +31,8 @@ eink:
 
   ### Cards ###
   paper-card-background-color: "#ffffff"
-  # paper-listbox-background-color has been removed in HA 2025.5+
   
   ### Toggles ###
-  # paper-toggle-button-* variables have been removed in HA 2025.5+
   # Modern toggle styles are handled by the component CSS
 
   ### Dialog ###
@@ -48,7 +45,6 @@ eink:
   iron-overlay-backdrop-background-color: "#ffffff"
   mdc-theme-primary: "#000"
 
-  # Modern switch styles for HA 2025.5+
   switch-checked-color: "#000"
   switch-unchecked-button-color: "#000"
   switch-unchecked-color: "#c1c1c1"
