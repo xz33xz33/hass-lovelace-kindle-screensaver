@@ -10,6 +10,8 @@ const gm = require("gm");
 
 // keep state of current battery level and whether the device is charging
 const batteryStore = {};
+// Флаг для отслеживания состояния рендеринга
+let isRendering = false;
 
 (async () => {
   if (config.pages.length === 0) {
@@ -80,10 +82,26 @@ const batteryStore = {};
   const httpServer = http.createServer(async (request, response) => {
     // Parse the request
     const url = new URL(request.url, `http://${request.headers.host}`);
+    
+    // HTTP эндпоинт для ручной генерации - ДОБАВЛЕНО В НАЧАЛО
+    if (url.pathname === '/update') {
+      const force = url.searchParams.get('force') === 'true';
+      
+      if (force || !isRendering) {
+        console.log('Manual generation triggered via HTTP request');
+        await triggerRendering(browser);
+        response.writeHead(200);
+        response.end('Rendering completed');
+      } else {
+        response.writeHead(202);
+        response.end('Rendering in progress');
+      }
+      return;
+    }
+    
     // Check the page number
     const pageNumberStr = url.pathname;
     // and get the battery level, if any
-    // (see https://github.com/sibbl/hass-lovelace-kindle-screensaver/README.md for patch to generate it on Kindle)
     const batteryLevel = parseInt(url.searchParams.get("batteryLevel"));
     const isCharging = url.searchParams.get("isCharging");
     const pageNumber =
@@ -159,6 +177,23 @@ const batteryStore = {};
     console.log(`Server is running at ${port}`);
   });
 })();
+
+// Функция для запуска рендеринга - ДОБАВЛЕНО
+async function triggerRendering(browser) {
+  if (isRendering) {
+    console.log('Rendering already in progress, skipping...');
+    return;
+  }
+  
+  isRendering = true;
+  try {
+    await renderAndConvertAsync(browser);
+  } catch (error) {
+    console.error('Rendering error:', error);
+  } finally {
+    isRendering = false;
+  }
+}
 
 async function renderAndConvertAsync(browser) {
   for (let pageIndex = 0; pageIndex < config.pages.length; pageIndex++) {
